@@ -1,0 +1,14 @@
+const int SENSOR_PIN = 7;
+int lastState = LOW;
+int currentState;
+void setup() {
+ Serial.begin(9600);
+ pinMode(SENSOR_PIN, INPUT);
+}
+void loop() {
+ currentState = digitalRead(SENSOR_PIN);
+ if (lastState == LOW && currentState == HIGH) {
+ Serial.println("The sensor is touched");
+ }
+ lastState = currentState;
+}
